@@ -31,23 +31,46 @@ input.on("keyup", function() {
 });
 
 button.on("click", function () {
-    console.log("Click!");
     event.preventDefault();
-    let inputElement = d3.select("#datetime");
-    let inputValue = inputElement.property("value");
-    console.log(inputValue);
+    console.log("Click!");
+    let inputElementDatetime = d3.select("#datetime");
+    let inputValueDatetime = inputElementDatetime.property("value");
+    console.log(inputValueDatetime);
+    let inputElementCity = d3.select("#city");
+    let inputValueCity = inputElementCity.property("value");
+    console.log(inputValueCity);
+    let inputElementState = d3.select("#state");
+    let inputValueState = inputElementState.property("value");
+    console.log(inputValueState);
+    let inputElementCountry = d3.select("#country");
+    let inputValueCountry = inputElementCountry.property("value");
+    console.log(inputValueCountry);
+    let inputElementShape = d3.select("#shape");
+    let inputValueShape = inputElementShape.property("value");
+    console.log(inputValueShape);
 
     function setDate(date) {
-        return date.datetime === inputValue;
+        return date.datetime === inputValueDatetime;
     };
 
-    if (setDate != null) {
-        var filteredData = tableData.filter(setDate);
-    } else {
-        var filteredData = tableData;
-    }
+    function setCity(city) {
+        return city.city === inputValueCity;
+    };
+
+    function setState(state) {
+        return state.state === inputValueState;
+    };
+
+    function setCountry(country) {
+        return country.country === inputValueCountry;
+    };
+
+    function setShape(shape) {
+        return shape.shape === inputValueShape;
+    };
+
+    let filteredData = tableData.filter(setDate).filter(setCity).filter(setState).filter(setCountry).filter(setShape);
     
-    console.log("This is the filtered data");
     console.log(filteredData);
 
     // //scrap the existing table
